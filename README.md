@@ -40,7 +40,7 @@ output.logstash:
 > In this example, replace `YOUR_CONTAINER_NAME` with part of your container's image name. This will instruct Filebeat to only try parsing structured logs for your particular container (and avoid it trying to parse unstructured logs).
 
 ## What if my logs are not parsed correctly?
-Often, Filebeat does an **alright** job of parsing your logs, but might get things like datatypes wrong. Parsing the correct datatypes (or anything else more complicated) cannot be done in Filebeat, but a simple pipeline in Logstash can be used. An example `pipeline.conf` demonstrates this:
+Often, Filebeat does an *alright* job of parsing your logs, but might get things like datatypes wrong. Parsing the correct datatypes (or anything else more complicated) cannot be done in Filebeat, but a simple pipeline in Logstash can be used. An example `pipeline.conf` demonstrates this:
 
 ```
 input {
