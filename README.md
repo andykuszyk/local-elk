@@ -61,3 +61,6 @@ output {
 ```
 
 > In this example, the field `YOUR_NUMERIC_FIELD` in your JSON log message has been converted to an integer by Logstash.
+
+## More information
+A more detailed explanation of this repo's content can be found in its corresponding blog post, [here](http://andykuszyk.github.io/2019-07-03-local-elk.html).
