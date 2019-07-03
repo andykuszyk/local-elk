@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.2.0
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+
+  kibana:
+    image: kibana:7.2.0
+    ports:
+      - "5601:5601"
+
+  logstash:
+    build: logstash
+    ports:
+      - "5044:5044"
+
+  filebeat:
+    build: filebeat
+    user: root
+    environment:
+      - setup.kibana.host=kibana:5601
+      - output.elasticsearch.hosts=["elasticsearch:9200"]
+      - strict.perms=false
+    volumes:
+      - type: bind
+        source: /var/lib/docker/containers
+        target: /var/lib/docker/containers
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        mode: ro
+
+volumes:
+  esdata1:
